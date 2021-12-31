@@ -1,0 +1,37 @@
+#+TITLE: Podman
+
+
+* Intro
+- pods: app-specific 'logical host'. share port bindings, cgroup-parent, namespaces
+- =infra= container 'root' to allocate namespaces, based on =pause= image
+- =podman=: OCI containers, daemonless, =systemd= interop
+- =skopeo=: image management
+- =buildah=: build images
+
+* Container Images
+- =runc= runtime
+- image: binary + metadata package
+  - RO intermediate images overlaid over empty container
+  - container layer: RW runtime layer overlaid upon last intermediate image
+  - imtermediate layers reusable
+  - images kept in =/var/lib/containers= for root, =~/.local/share/containers= for unprivileged user.
+    - alternatively, set up registry
+** Podman
+- =/etc/containers/=
+  - =registries.conf=
+  - =storage.conf=
+- =podman= CLI
+  - image / images
+  - inspect
+  - pull/push
+  - search
+  - login/logout
+  - rmi
+  - tag/untag
+** Skopeo
+- CLI
+  - login/logout
+  - inspect
+  - copy
+  - sync
+  - list-tags
